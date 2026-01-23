@@ -1,4 +1,4 @@
-[package]
+id = "zed.vortx"
 name = "vortx"
 version = "0.1.0"
 description = "Vortx workflow DSL syntax highlighting and language support"
@@ -8,8 +8,8 @@ schema_version = 1
 
 [grammars.vortx]
 repository = "https://github.com/mwatts/tree-sitter-vortx"
-rev = "main"
+rev = "25ad608e4627cee6f89636aafdc213bf15e112a6"
 
 [grammars.rhai_expr]
 repository = "https://github.com/mwatts/tree-sitter-rhai-expr"
-rev = "main"
+rev = "3df9aacd703198c9fd0fffffd5b52532be477720"
