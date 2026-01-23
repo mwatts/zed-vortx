@@ -1,0 +1,4 @@
+name = "Rhai Expression"
+grammar = "rhai_expr"
+path_suffixes = []
+tab_size = 2
