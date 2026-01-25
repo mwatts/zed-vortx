@@ -9,3 +9,6 @@
 ; Node definitions in outline (within workflow context)
 (node_definition
   name: (identifier) @name) @item
+
+; Requires block in outline
+(requires_block) @item

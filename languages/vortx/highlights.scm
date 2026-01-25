@@ -5,8 +5,13 @@
   "node"
   "edge"
   "let"
+  "var"
   "version"
+  "deadline"
   "define"
+  "requires"
+  "from"
+  "when"
 ] @keyword
 
 ; Builtin function (expr)
@@ -37,19 +42,31 @@
 (define_statement
   kind: (identifier) @type)
 
-; Let binding name
+; Let/var binding name
 (let_binding
+  name: (identifier) @variable)
+(var_binding
   name: (identifier) @variable)
 
 ; Parameter keys
 (parameter
   key: (identifier) @property)
 
+; Object entry keys
+(object_entry
+  key: (identifier) @property)
+
+; Requires block
+(requires_line
+  source: (string) @string.special)
+
 ; Edge components
 (edge_source
   node: (identifier) @variable)
-(edge_source
-  output: (identifier) @label)
+(edge_output_name
+  (identifier) @label)
+(edge_output_name
+  (integer) @label)
 (edge_definition
   target: (identifier) @variable)
 
@@ -82,5 +99,4 @@
   ","
   ":"
   "="
-  "."
 ] @punctuation.delimiter
