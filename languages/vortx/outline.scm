@@ -6,9 +6,13 @@
 (define_statement
   name: (identifier) @name) @item
 
-; Node definitions in outline (within workflow context)
-(node_definition
+; Activity statements in outline
+(activity_statement
   name: (identifier) @name) @item
+
+; Step definitions in outline (within workflow context)
+(step_def
+  id: (identifier) @name) @item
 
 ; Requires block in outline
 (requires_block) @item

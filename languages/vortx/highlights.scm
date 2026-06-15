@@ -1,28 +1,29 @@
 ; Keywords
 [
   "workflow"
-  "end"
-  "node"
-  "edge"
-  "let"
-  "var"
-  "version"
-  "deadline"
   "define"
+  "activity"
   "requires"
+  "end"
+  "constants"
+  "vars"
+  "inputs"
+  "deadline"
+  "branches"
   "from"
+  "fork"
+  "group"
   "when"
+  "as"
+  "version"
 ] @keyword
 
-; Builtin function (expr)
+; Builtin function
 "expr" @function.builtin
 
 ; Builtin constants
-[
-  "true"
-  "false"
-  "null"
-] @constant.builtin
+(boolean) @constant.builtin
+(null_literal) @constant.builtin
 
 ; Workflow name
 (workflow_block
@@ -32,51 +33,63 @@
 (define_statement
   name: (identifier) @function)
 
-; Node name
-(node_definition
-  name: (identifier) @variable)
+; Activity name
+(activity_statement
+  name: (identifier) @function)
 
-; Node kind / define base kind
-(node_definition
+; Step id
+(step_def
+  id: (identifier) @variable)
+
+; Group step id
+(group_step
+  id: (identifier) @variable)
+
+; Step kind / define base kind / activity kind
+(step_def
   kind: (identifier) @type)
 (define_statement
   kind: (identifier) @type)
+(activity_statement
+  kind: (identifier) @type)
 
-; Let/var binding name
-(let_binding
-  name: (identifier) @variable)
-(var_binding
-  name: (identifier) @variable)
+; Step binding alias
+(step_def
+  binding: (identifier) @variable)
+
+; Bare reference
+(bare_ref
+  ref: (identifier) @variable)
 
 ; Parameter keys
-(parameter
+(param
   key: (identifier) @property)
 
 ; Object entry keys
 (object_entry
   key: (identifier) @property)
 
+; kv_entry keys (constants/vars)
+(kv_entry
+  key: (identifier) @property)
+
 ; Requires block
 (requires_line
   source: (string) @string.special)
 
-; Edge components
-(edge_source
-  node: (identifier) @variable)
-(edge_output_name
-  (identifier) @label)
-(edge_output_name
-  (integer) @label)
-(edge_definition
+; Branch arm components
+(branch_arm
   target: (identifier) @variable)
+(branches_block
+  from: (identifier) @variable)
 
-; Edge operator
+; Arrow operator
 "->" @operator
+; Pipe operator
+"|" @operator
 
 ; Literals
 (string) @string
-(string_content) @string
-(escape_sequence) @string.escape
 (triple_string) @string
 (number) @number
 (integer) @number

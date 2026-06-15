@@ -8,7 +8,7 @@ schema_version = 1
 
 [grammars.vortx]
 repository = "https://github.com/mwatts/tree-sitter-vortx"
-rev = "24c095ea32e054d3d2d48df4c18a0feda325e318"
+rev = "47fb2e3"
 
 [grammars.rhai_expr]
 repository = "https://github.com/mwatts/tree-sitter-rhai-expr"
